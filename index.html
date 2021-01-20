@@ -5,8 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>tuDuList</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link rel="stylesheet" href="src/css/normalize.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <link rel="stylesheet" href="src/css/style-alicia.css">
     <link rel="stylesheet" href="src/css/style-tim.css">
 
@@ -16,7 +18,75 @@
 </head>
 
 <body>
+    <header>
+        <div class="center border">
+            <h1>
+                Navbar Placeholder
+            </h1>
+        </div>
+    </header>
 
+    <main class="container-fluid row border border-secondary">
+
+        <div class="col-12 col-lg-3 center">
+            <aside class="border">
+                <h2>
+                    Placeholder List Boxes
+                </h2>
+            </aside>
+        </div>
+
+        <div class="col-12 col-lg-6 row m-0 tasks-container shadow-lg p-3 mb-5 rounded">
+
+            <div class="col-12">
+                <div class="input-group">
+                    <input type="text" class="form-control form-control-lg add-task" placeholder="Add task ...">
+                    <button class="input-group-text btn-danger" id="add-task-btn">
+                         + 
+                    </button>
+                </div>
+            </div>
+
+            <ul class="col-12 row m-0" id="task-list">
+                <!-- Dynamic JS List is being created here -->
+            </ul>
+
+        </div>
+
+
+        <div class="col-12 col-lg-3 center">
+            <aside class="border mb-5 d-inline">
+                <h2>
+                    Collegues
+                </h2>
+                <div class="row border border-danger">
+                    <div class="col-12 col-lg-6 border border-primary">
+                        <img src="https://img.icons8.com/bubbles/2x/user-male.png " class="rounded mx-auto d-block college" alt="...">
+                    </div>
+                    <div class="col-12 col-lg-6  border border-secondary">
+                        <img src="https://img.icons8.com/bubbles/2x/user-male.png " class="rounded mx-auto d-block college" alt="...">
+                    </div>
+
+                </div>
+
+            </aside>
+
+            <aside class="row gone-tasks ">
+                <div class="col-12 col-md-6 shadow-sm gone m-1">
+                    <h6>Deleted</h6>
+                    <i class="fas fa-trash task-icon"></i>
+                </div>
+                <div class="col-12 col-md-6 shadow-sm gone m-1">
+                    <h6>Done</h6>
+                    <i class="fas fa-check task-icon"></i>
+                </div>
+
+            </aside>
+        </div>
+    </main>
+    <footer class="center border">
+        <h3>Footer Placeholder</h3>
+    </footer>
 </body>
 
 </html>
