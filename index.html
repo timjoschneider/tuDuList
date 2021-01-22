@@ -11,6 +11,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <link rel="stylesheet" href="src/css/style-alicia.css">
     <link rel="stylesheet" href="src/css/style-tim.css">
+    <!-- footer css -->
+    <link rel="stylesheet" href="src/css/footer.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
     <script src="src/js/script-alicia.js" defer></script>
     <script src="src/js/script-tim.js" defer></script>
@@ -20,35 +23,58 @@
 <body>
     <header>
         <div class="navbar">
-            <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
-                <a class="navbar-brand" href="#"></a>
-                <img class="image-logo" src="src/image/th.jpg" alt="image-logo">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_nav">
-                  <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="input-group">
-                    <div class="form-outline">
-                        <input type="search" id="form1" class="form-control" placeholder="search" />
+            <nav class="navbar fixed-top navbar-expand-lg navbar-dark tim">
+
+                <div class="row col-12">
+                    <!-- LOGO -->
+                    <div class="col-2">
+                        <a class="navbar-brand" href="index.html">
+                            <img class="image-logo" src="data:image/png;base64,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"
+                                alt="image-logo">
+                        </a>
                     </div>
-                    <button type="button" class="btn btn-primary zero">
-                      <i class="fas fa-search"></i>
-                    </button>
+                    <!-- SEARCH BAR -->
+                    <div class="col-8">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_nav">
+                            <span class="navbar-toggler-icon"></span>
+                          </button>
+
+                        <div class="input-group">
+                            <div class="form-outline">
+                                <input type="search" id="form1" class="form-control search-bar add-task" placeholder="search" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-2">
+                        <!-- SIGN IN  -->
+                        <div class="collapse navbar-collapse" id="main_nav">
+                            <a class="btn btn-light" href="#">Sign In / Up</a>
+                        </div>
+                    </div>
+
                 </div>
 
-                <div class="collapse navbar-collapse" id="main_nav">
-                    <ul class="navbar-nav mx-auto">
-                        <li class="nav-item active"> <a class="nav-link" href="#">Home </a> </li>
-                        <li class="nav-item"><a class="nav-link" href="#"> About </a></li>
-                        <li class="nav-item"><a class="nav-link" href="#"> Services </a></li>
-                    </ul>
-                    <a class="btn btn-warning" href="#">Button</a>
-                </div>
+
+
+            </nav>
         </div>
     </header>
 
     <main class="container-fluid row border border-secondary">
 
+
+        <div class="col-12">
+            <h1 id="list-title" class="center">Placeholder</h1>
+        </div>
+
         <div class="col-12 col-lg-3 center">
+            <div class="input-group mb-3">
+                <input id="add-list-input" type="text" class="form-control" placeholder="Add list" aria-describedby="button-addon2">
+                <button id="btn-add-list" class="btn btn-primary">+</button>
+            </div>
+
+
             <aside class="border">
                 <h2>
                     Placeholder List Boxes
@@ -56,9 +82,9 @@
             </aside>
         </div>
 
-        <div class="col-12 col-lg-6 row m-0 tasks-container shadow-lg p-3 mb-5 rounded">
+        <div class="col-12 col-lg-6 row m-0 tasks-container shadow-lg p-3 mb-5 rounded bg-darker">
 
-            <div class="col-12">
+            <div class="col-12 m-0 p-0">
                 <div class="input-group">
                     <input type="text" class="form-control form-control-lg add-task" placeholder="Add task ...">
                     <button class="input-group-text btn-danger" id="add-task-btn">
@@ -67,24 +93,29 @@
                 </div>
             </div>
 
-            <ul class="col-12 row m-0" id="task-list">
-                <!-- Dynamic JS List is being created here -->
-            </ul>
+            <div class="col-12 m-0 p-0">
+                <ul id="task-list">
+                    <!-- Dynamic JS List is being created here -->
+                </ul>
+            </div>
+
 
         </div>
 
 
         <div class="col-12 col-lg-3 center">
-            <aside class="border mb-5 d-inline">
+            <aside class="mb-5 d-inline">
                 <h2>
-                    Collegues
+                    Colleagues
                 </h2>
-                <div class="row border border-danger">
-                    <div class="col-12 col-lg-6 border border-primary">
+                <div class="row">
+                    <div class="col-12 col-lg-6">
                         <img src="https://img.icons8.com/bubbles/2x/user-male.png " class="rounded mx-auto d-block college" alt="...">
+                        <h6>Tim</h6>
                     </div>
-                    <div class="col-12 col-lg-6  border border-secondary">
-                        <img src="https://img.icons8.com/bubbles/2x/user-male.png " class="rounded mx-auto d-block college" alt="...">
+                    <div class="col-12 col-lg-6">
+                        <img src="https://soulprism.in/img/female.png " class="rounded mx-auto d-block college" alt="...">
+                        <h6>Alicia</h6>
                     </div>
 
                 </div>
@@ -92,11 +123,11 @@
             </aside>
 
             <aside class="row gone-tasks ">
-                <div class="col-12 col-md-6 shadow-sm gone m-1">
+                <div class="col-12 col-md-6 shadow-sm gone m-1 rounded">
                     <h6>Deleted</h6>
                     <i class="fas fa-trash task-icon"></i>
                 </div>
-                <div class="col-12 col-md-6 shadow-sm gone m-1">
+                <div class="col-12 col-md-6 shadow-sm gone m-1 rounded">
                     <h6>Done</h6>
                     <i class="fas fa-check task-icon"></i>
                 </div>
@@ -104,8 +135,52 @@
             </aside>
         </div>
     </main>
-    <footer class="center border">
-        <h3>Footer Placeholder</h3>
+    <!-- footer -->
+    <footer class="bg-light text-center text-lg-start center border" id="footer-top">
+        <div class="footer-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 col-lg-3 offset-lg-1 footer-about wow fadeInUp">
+                        <h6> Please do not hestitate to contact TuDuList on the following channels:</h6>
+                        <img class="logo-footer" src="data:image/png;base64,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"
+                            alt="logo-footer">
+                    </div>
+                    <div class="col-md-4 col-lg-3 offset-lg-1 footer-contact wow fadeInDown">
+                        <h6 class="title-footer">Contact TuDuList</h6>
+                        <p> WhatsApp: +49 01 234 567 89</p>
+                        <p> Facebook: facebook.com</p>
+                        <p> Twitter: TuDuList</p>
+                        <p> LinkedIn: TuDuList</p>
+                        <p> Email: <a class="email-footer" href="#">TuDuList@info.com</a></p>
+                        <p> GitHub: TuDuList</p>
+                    </div>
+                    <div class="col-md-4 col-lg-3 offset-lg-1 footer-links wow fadeInUp">
+                        <div class="container">
+                            <h5 class="social-media-footer">Feel free to share your TuDuList on:</h5>
+                            <div class="social">
+                                <a href="#" id="share-wa" class="sharer button"><i class="fa fa-3x fa-whatsapp"></i></a>
+                                <a href="#" id="share-fb" class="sharer button"><i
+                                    class="fa fa-3x fa-facebook-square"></i></a>
+                                <a href="#" id="share-tw" class="sharer button"><i
+                                    class="fa fa-3x fa-twitter-square"></i></a>
+                                <a href="#" id="share-li" class="sharer button"><i
+                                    class="fa fa-3x fa-linkedin-square"></i></a>
+                                <!-- google+ gelöscht -->
+                                <a href="#" id="share-em" class="sharer button"><i
+                                    class="fa fa-3x fa-envelope-square"></i></a>
+                                <!-- selbst geschafft git hub einzufügen...fa-lg in fa-3x umgewandelt (erst google gebraucht, dann gemerkt, oben ist ja das gleiche) -->
+                                <a href="https://github.com/timjoschneider/tuDuList" title="GitHub Profile" target="_blank"><i class="github-logo fa fa-github-square fa-3x"></i></a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copyright text-center p-3" id="footer-bottom">
+            © 2021 Copyright: Alicia, Emeline, Tim
+            <a class="text-white link-end" href="#">TuDuList</a>
+        </div>
     </footer>
 </body>
 

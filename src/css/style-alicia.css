@@ -4,15 +4,18 @@
 }
 
 body {
-    background-color: white;
+    /* background-color: #151B29; */
+}
+
+main {
+    padding-top: 80px;
 }
 
 .tasks-container {
-    background-color: #f0c4a8;
     /* max-width: 60%; */
     /* background-image: url(https://ak1.ostkcdn.com/images/products/is/images/direct/4010ad7fd44a00b963046298bf5f1379671f8eb4/Mint-Wild-Flowers-Removable-Wallpaper.jpg?impolicy=medium); */
     /* background-image: url(https://www.xmple.com/wallpaper/linear-yellow-gradient-orange-1280x720-c2-ffdab9-ff6347-a-30-f-14.svg); */
-    background-image: url(https://i.pinimg.com/736x/ec/d6/99/ecd6998075ddc82c5b35f5d76289bcd0.jpg);
+    /* background-image: url(https://i.pinimg.com/736x/ec/d6/99/ecd6998075ddc82c5b35f5d76289bcd0.jpg); */
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -23,11 +26,12 @@ h3,
 h4,
 h5,
 h6 {
-    color: #ef7b6c;
+    color: #1C2437;
 }
 
-p {
-    color: rgb(44, 44, 44);
+.list-text {
+    /* color: rgb(44, 44, 44); */
+    color: white;
 }
 
 .center {
@@ -66,13 +70,13 @@ input[type="checkbox"]:checked {
 
 .task-icon {
     transform: scale(2, 2);
-    color: #ef7b6c;
+    color: #F4F3BA;
     cursor: pointer;
 }
 
 .task {
-    background-color: rgba(255, 255, 255, .15);
-    backdrop-filter: blur(10px);
+    /* background-color: rgba(255, 255, 255, 0.15); */
+    /* backdrop-filter: blur(10px); */
 }
 
 .gone-tasks {
@@ -90,4 +94,12 @@ input[type="checkbox"]:checked {
 
 .college {
     max-height: 150px;
+}
+
+.bg-lighter {
+    background-color: #1C2437;
+}
+
+.bg-darker {
+    background-color: #151B29;
 }
