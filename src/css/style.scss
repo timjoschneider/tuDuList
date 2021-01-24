@@ -1,8 +1,9 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
 $mainColor: #6d8293;
 $secondColor: #d3f4e7;
 * {
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
     color: $mainColor;
 }
 
@@ -36,19 +37,17 @@ main {
     box-sizing: border-box;
 }
 
-.tasks-container {
-    /* max-width: 60%; */
-    /* background-image: url(https://ak1.ostkcdn.com/images/products/is/images/direct/4010ad7fd44a00b963046298bf5f1379671f8eb4/Mint-Wild-Flowers-Removable-Wallpaper.jpg?impolicy=medium); */
-    /* background-image: url(https://www.xmple.com/wallpaper/linear-yellow-gradient-orange-1280x720-c2-ffdab9-ff6347-a-30-f-14.svg); */
-    /* background-image: url(https://i.pinimg.com/736x/ec/d6/99/ecd6998075ddc82c5b35f5d76289bcd0.jpg); */
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-.list-text {
-    color: $mainColor;
-}
-
+// .tasks-container {
+//     /* max-width: 60%; */
+//     /* background-image: url(https://ak1.ostkcdn.com/images/products/is/images/direct/4010ad7fd44a00b963046298bf5f1379671f8eb4/Mint-Wild-Flowers-Removable-Wallpaper.jpg?impolicy=medium); */
+//     /* background-image: url(https://www.xmple.com/wallpaper/linear-yellow-gradient-orange-1280x720-c2-ffdab9-ff6347-a-30-f-14.svg); */
+//     /* background-image: url(https://i.pinimg.com/736x/ec/d6/99/ecd6998075ddc82c5b35f5d76289bcd0.jpg); */
+//     background-repeat: no-repeat;
+//     background-size: cover;
+// }
+// .list-text {
+//     color: $mainColor;
+// }
 nav {
     background-color: $secondColor;
     height: 80px;
@@ -68,7 +67,7 @@ ul li {
 }
 
 .add-task::placeholder {
-    color: rgb(141, 141, 141);
+    color: rgb(145, 160, 160);
     font-size: medium;
 }
 
@@ -133,9 +132,9 @@ input[type="checkbox"]:checked {
 .li-item {
     display: flex;
     flex-direction: row;
-    flex-wrap: nowrap;
+    flex-wrap: rap;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: center;
     align-content: flex-start;
 }
 
@@ -144,7 +143,7 @@ input[type="checkbox"]:checked {
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: space-around;
-    align-items: flex-start;
+    align-items: center;
     align-content: flex-start;
 }
 
@@ -173,8 +172,6 @@ input[type="checkbox"]:checked {
     align-content: stretch;
 }
 
-.socials {}
-
 .left {
     text-align: left;
 }
@@ -185,4 +182,12 @@ input[type="checkbox"]:checked {
 
 .block-links {
     display: block;
+}
+
+.unused-shit {
+    align-items: center;
+}
+
+.fa-trash {
+    cursor: pointer;
 }

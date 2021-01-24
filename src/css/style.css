@@ -1,6 +1,8 @@
-@import url("https://fonts.googleapis.com/css?family=Open+Sans&display=swap");
 * {
   margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   color: #6d8293;
 }
 
@@ -37,19 +39,6 @@ main {
           box-sizing: border-box;
 }
 
-.tasks-container {
-  /* max-width: 60%; */
-  /* background-image: url(https://ak1.ostkcdn.com/images/products/is/images/direct/4010ad7fd44a00b963046298bf5f1379671f8eb4/Mint-Wild-Flowers-Removable-Wallpaper.jpg?impolicy=medium); */
-  /* background-image: url(https://www.xmple.com/wallpaper/linear-yellow-gradient-orange-1280x720-c2-ffdab9-ff6347-a-30-f-14.svg); */
-  /* background-image: url(https://i.pinimg.com/736x/ec/d6/99/ecd6998075ddc82c5b35f5d76289bcd0.jpg); */
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-.list-text {
-  color: #6d8293;
-}
-
 nav {
   background-color: #d3f4e7;
   height: 80px;
@@ -69,22 +58,22 @@ ul li {
 }
 
 .add-task::-webkit-input-placeholder {
-  color: #8d8d8d;
+  color: #91a0a0;
   font-size: medium;
 }
 
 .add-task:-ms-input-placeholder {
-  color: #8d8d8d;
+  color: #91a0a0;
   font-size: medium;
 }
 
 .add-task::-ms-input-placeholder {
-  color: #8d8d8d;
+  color: #91a0a0;
   font-size: medium;
 }
 
 .add-task::placeholder {
-  color: #8d8d8d;
+  color: #91a0a0;
   font-size: medium;
 }
 
@@ -154,14 +143,14 @@ input[type="checkbox"]:checked {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  -ms-flex-wrap: nowrap;
-      flex-wrap: nowrap;
+  -ms-flex-wrap: rap;
+      flex-wrap: rap;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   -ms-flex-line-pack: start;
       align-content: flex-start;
 }
@@ -178,9 +167,9 @@ input[type="checkbox"]:checked {
       flex-wrap: nowrap;
   -ms-flex-pack: distribute;
       justify-content: space-around;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   -ms-flex-line-pack: start;
       align-content: flex-start;
 }
@@ -231,5 +220,15 @@ input[type="checkbox"]:checked {
 
 .block-links {
   display: block;
+}
+
+.unused-shit {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.fa-trash {
+  cursor: pointer;
 }
 /*# sourceMappingURL=style.css.map */

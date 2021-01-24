@@ -9,8 +9,9 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <link rel="stylesheet" href="src/css/style.css">
+    <link rel="stylesheet" href="src/css/style2.css">
     <!-- footer icons tim -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"> -->
 
     <script src="src/js/script-alicia.js" defer></script>
     <script src="src/js/script-tim.js" defer></script>
@@ -43,10 +44,10 @@
 
                         <ul class="nav navbar-nav ml-auto w-100 justify-content-end nav-right">
                             <li class="nav-item">
-                                <a class="nav-link" href="#">About</a>
+                                <a class="nav-link" href="#">About </a>
                             </li>
-                            <li class="nav-item sign-border rounded">
-                                <a class="nav-link" href="#">Sign In/Up</a>
+                            <li class="nav-item shadow-sm rounded">
+                                <a class="nav-link btn btn-outline-light rounded" href="#"> Sign In/Up</a>
                             </li>
                         </ul>
                     </div>
@@ -59,9 +60,9 @@
     </header>
 
 
-    <div class="container main-container pb-5">
+    <main class="container main-container pb-5">
         <div class="col-12">
-            <h1 id="list-title" class="center">Placeholder</h1>
+            <h1 id="list-title" class="center">Tu Du List</h1>
         </div>
         <div class="row">
             <div class="col-12 col-lg-3 pt-3">
@@ -76,7 +77,9 @@
             </div>
 
             <div class="col-12 col-lg-6 shadow row m-0 pt-3">
-                <h3>Main Content</h3>
+                <h3>Open Tasks</h3>
+
+
                 <div class="col-12 pb-2">
                     <div class="input-group col-12">
                         <input id="add-task-input" type="text" class="form-control form-control-lg add-task" placeholder="Add task ...">
@@ -91,10 +94,10 @@
 
             </div>
 
-            <div class="col-12 col-lg-3 pt-3 center">
-                <h3>Collaborators</h3>
+            <div class="col-12 col-lg-3 pt-3 right">
+                <h4>Collaborators</h4>
                 <div class="row box-sizing ">
-                    <div class="col-12 col-md-4 center">
+                    <div class="col-12 col-md-4 center not-existing">
                         <img src="https://soulprism.in/img/female.png " class="rounded mx-auto d-block college" alt="...">
                         <h6>Emeline</h6>
                     </div>
@@ -108,12 +111,14 @@
                     </div>
 
                 </div>
+                <h4 class="mt-5">Stats</h4>
+                <p>Open Tasks: <strong id="nr-open-tasks"></strong></p>
+                <p>Done Tasks: <strong id="nr-done-tasks"></strong></p>
+                <p>Deleted Tasks: <strong id="nr-deleted-tasks"></strong></p>
             </div>
         </div>
 
-    </div>
-
-
+    </main>
 
 
 
@@ -144,18 +149,26 @@
 
             <div class="col-4 right">
                 <h5 class="pb-3">Share TuDuList</h5>
-                <a href="#" id="share-wa" class="sharer button"><i class="fa fa-2x fa-whatsapp"></i></a>
-                <a href="#" id="share-fb" class="sharer button"><i
-                    class="fa fa-2x fa-facebook-square"></i></a>
-                <a href="#" id="share-tw" class="sharer button"><i
-                    class="fa fa-2x fa-twitter-square"></i></a>
-                <a href="#" id="share-li" class="sharer button"><i
-                    class="fa fa-2x fa-linkedin-square"></i></a>
+                <a href="#" id="share-wa" class="sharer button">
+                    <i class="fab fa-2x fa-whatsapp"></i>
+                </a>
+                <a href="#" id="share-fb" class="sharer button">
+                    <i class="fab fa-2x fa-facebook"></i>
+                </a>
+                <a href="#" id="share-tw" class="sharer button">
+                    <i class="fab fa-2x fa-twitter"></i>
+                </a>
+                <a href="#" id="share-li" class="sharer button">
+                    <i class="fab fa-2x fa-linkedin"></i>
+                </a>
                 <!-- google+ gelöscht -->
-                <a href="#" id="share-em" class="sharer button"><i
-                    class="fa fa-2x fa-envelope-square"></i></a>
+                <a href="#" id="share-em" class="sharer button">
+                    <i class="fas fa-2x fa-at"></i>
+                </a>
                 <!-- selbst geschafft git hub einzufügen...fa-lg in fa-2x umgewandelt (erst google gebraucht, dann gemerkt, oben ist ja das gleiche) -->
-                <a href="https://github.com/timjoschneider/tuDuList" title="GitHub Profile" target="_blank"><i class="github-logo fa fa-github-square fa-2x"></i></a>
+                <a href="https://github.com/timjoschneider/tuDuList" title="GitHub Profile" target="_blank">
+                    <i class="fab fa-github fa-2x"></i>
+                </a>
             </div>
 
             <div class="col-12 py-5 center">
