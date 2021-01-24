@@ -1,0 +1,188 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+$mainColor: #6d8293;
+$secondColor: #d3f4e7;
+* {
+    margin: 0;
+    color: $mainColor;
+}
+
+html {
+    font-size: 100%;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    position: relative;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+header {
+    position: relative;
+    margin-top: 0;
+}
+
+main {
+    position: relative;
+}
+
+.main-container {
+    position: relative;
+    box-sizing: border-box;
+}
+
+.tasks-container {
+    /* max-width: 60%; */
+    /* background-image: url(https://ak1.ostkcdn.com/images/products/is/images/direct/4010ad7fd44a00b963046298bf5f1379671f8eb4/Mint-Wild-Flowers-Removable-Wallpaper.jpg?impolicy=medium); */
+    /* background-image: url(https://www.xmple.com/wallpaper/linear-yellow-gradient-orange-1280x720-c2-ffdab9-ff6347-a-30-f-14.svg); */
+    /* background-image: url(https://i.pinimg.com/736x/ec/d6/99/ecd6998075ddc82c5b35f5d76289bcd0.jpg); */
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.list-text {
+    color: $mainColor;
+}
+
+nav {
+    background-color: $secondColor;
+    height: 80px;
+}
+
+a {
+    text-decoration: none;
+    color: $mainColor;
+}
+
+ul li {
+    list-style-type: none;
+}
+
+.center {
+    text-align: center;
+}
+
+.add-task::placeholder {
+    color: rgb(141, 141, 141);
+    font-size: medium;
+}
+
+#add-task-btn {
+    width: 40px;
+}
+
+// input[type="checkbox"] {
+//     transform: scale(2, 2);
+// }
+input[type="checkbox"]:checked {
+    background-color: rgb(90, 168, 149);
+    border-color: rgb(90, 168, 149);
+}
+
+.task-icon {
+    transform: scale(2, 2);
+    color: $mainColor;
+    cursor: pointer;
+}
+
+.gone-tasks {
+    max-width: 400px;
+    box-sizing: border-box;
+}
+
+.gone {
+    max-width: 180px;
+}
+
+.icons {
+    text-align: end;
+}
+
+.college {
+    max-height: 80px;
+    width: auto;
+}
+
+.bg-lighter {
+    background-color: white;
+}
+
+.bg-darker {
+    background-color: $secondColor;
+}
+
+#list-title {
+    padding: 3% 0;
+}
+
+.add-task-box {
+    padding: 20%;
+}
+
+.box-sizing {
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+}
+
+.li-item {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    align-content: flex-start;
+}
+
+.icons {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: flex-start;
+    align-content: flex-start;
+}
+
+.li-item-done {
+    padding-left: 0;
+}
+
+.li-item-deleted {
+    text-decoration: line-through;
+}
+
+.restore {
+    cursor: pointer;
+}
+
+.sign-border {
+    border: 1px solid $mainColor;
+}
+
+.footer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: stretch;
+    align-content: stretch;
+}
+
+.socials {}
+
+.left {
+    text-align: left;
+}
+
+.right {
+    text-align: right;
+}
+
+.block-links {
+    display: block;
+}
