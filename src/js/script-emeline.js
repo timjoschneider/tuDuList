@@ -64,6 +64,7 @@ const addTaskStatic = (task) => {
     taskUl.insertAdjacentHTML('afterbegin', listItem);
 };
 
+
 // ------------------------------- preload static content for tasks DONE
 const addTaskStaticDone = (task) => {
     const listItem = `
@@ -90,6 +91,39 @@ const addTaskStaticDeleted = (task) => {
       `;
     taskUlDeleted.insertAdjacentHTML('afterbegin', listItem);
 };
+
+// trash.addEventListener('click', (event) => {
+//     deleteTask(content);
+//     li.parentNode.removeChild(li);
+// }, false);
+// ------------------------------- EDIT open tasks
+// ATTEMPT 1
+// const editButton = document.querySelector(".fa-edit");
+// const editLabel = document.createElement("label"); //link to parent .li-item
+// const editInput = document.createElement("input"); //link to parent .li-item
+// editButton.appendChild(editLabel);
+// editButton.appendChild(editInput); 
+// editButton.addEventListener("click", (inputEditTask) => {
+//     label.innerText = staticOpenTasks;
+// });
+// inputEditTask = () => {
+//     editLabel.innerText="Edit";
+//     editInput.type="text";
+//  }
+
+// ATTEMPT 2
+const editInput = "";
+
+edit.addEventListener('click', (editInput) => {
+    editTask(content);
+    li.parentNode.replaceChildren(listItem, editInput);
+}
+//${task}
+
+
+
+
+
 
 // for each list of tasks, call func to add item to the container
 const loadStaticContent = (arr, func) => { arr.forEach((task) => { func(task); }) };
