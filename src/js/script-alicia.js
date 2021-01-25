@@ -1,5 +1,5 @@
-// ---------------------------- CLASSES ------------------------------- //
-// todo LIST class
+// ---------------------------- OOP -------------------------------
+// todo LIST parent class
 class ToDoList {
     constructor(listName = "") {
         this._listName = listName;

@@ -107,6 +107,10 @@ input[type="checkbox"]:checked {
   text-align: end;
 }
 
+.fa-edit {
+  padding: 0 1.5rem;
+}
+
 .college {
   max-height: 80px;
   width: auto;
@@ -228,11 +232,12 @@ input[type="checkbox"]:checked {
           align-items: center;
 }
 
-.fa-trash {
+.fa-trash,
+.fa-edit {
   cursor: pointer;
 }
 
 .fa-edit {
   cursor: pointer;
 }
-/*# sourceMappingURL=style.css.map */
+
