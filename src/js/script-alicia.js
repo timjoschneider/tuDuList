@@ -102,20 +102,6 @@ loadStaticContent(staticDeletedTasks, addTaskStaticDeleted);
 
 
 
-// static content: status: 0 = open; 1 = done; 2 = deleted;
-const tasksStatic = [{
-    name: "Babadoook",
-    status: 0, // open
-}, {
-    name: "mofucker",
-    status: 2, // deleted
-}, {
-    name: "Test idiot",
-    status: 1, // done
-}]
-
-// const checkboxes = document.querySelectorAll('.checkbox');
-
 const restoreTask = (content) => {
     addTaskStatic(content);
 }
@@ -128,13 +114,14 @@ const deleteTask = (content) => {
     addTaskStaticDeleted(content);
 }
 
+
 // move open tasks to either done or deleted tasks onclick
 const liOpen = document.querySelectorAll('.li-item');
 liOpen.forEach((li) => {
     const checkbox = li.firstElementChild.firstElementChild;
     const content = li.childNodes[3].textContent;
-    const trash = li.childNodes[5].childNodes[3]
-        // TODO const edit = li.childNodes[?];
+    const trash = li.childNodes[5].childNodes[3];
+    // TODO const edit = li.childNodes[?];
     checkbox.addEventListener('change', (event) => {
         doneTask(content);
         li.parentNode.removeChild(li);
@@ -144,6 +131,11 @@ liOpen.forEach((li) => {
         deleteTask(content);
         li.parentNode.removeChild(li);
     }, false);
+
+    // TODO edit.addEventListener('click', (event) => {
+    //     editTask(content);
+    //     // li.parentNode.removeChild(li);
+    // }, false);
 })
 
 // restore done tasks back to open tasks onclick
@@ -175,6 +167,7 @@ liDeleted.forEach((li) => {
 const nrOpenTasks = document.getElementById("nr-open-tasks");
 const nrDoneTasks = document.getElementById("nr-done-tasks");
 const nrDeletedTasks = document.getElementById("nr-deleted-tasks");
+// TODO Replace with dynamic lists
 nrOpenTasks.textContent = staticOpenTasks.length;
 nrDoneTasks.textContent = staticDoneTasks.length;
 nrDeletedTasks.textContent = staticDeletedTasks.length;
@@ -207,11 +200,10 @@ class ToDoList {
 
 // todo TASK child class
 class Task extends ToDoList {
-    constructor(task, date = Date.now(), done = false) {
+    constructor(task, date = Date.now()) {
         super(listName);
         this._task = task;
         this._date = date;
-        this._done = done;
     }
     get task() {
         return this._task;
@@ -219,6 +211,16 @@ class Task extends ToDoList {
 
     get date() {
         return this._date;
+    }
+
+    createTask() {
+
+    }
+    editTask() {
+
+    }
+    deleteClass() {
+
     }
 }
 
