@@ -47,7 +47,7 @@ const staticDeletedTasks = [
 ]
 
 
-// preload static content into list
+// ------------------------------- preload static content for tasks DONE
 const addTaskStatic = (task) => {
     const listItem = `
         <li class="shadow-sm li-item mb-2">
@@ -65,7 +65,7 @@ const addTaskStatic = (task) => {
 };
 
 
-// ------------------------------- container for tasks DONE
+// ------------------------------- preload static content for tasks DONE
 const addTaskStaticDone = (task) => {
     const listItem = `
     <li class="pb-2 m-0 li-item-done">
@@ -79,7 +79,7 @@ const addTaskStaticDone = (task) => {
     taskUlDone.insertAdjacentHTML('afterbegin', listItem);
 };
 
-// ------------------------------- container for tasks DELETED
+// ------------------------------- preload static content for tasks DELETED
 const addTaskStaticDeleted = (task) => {
     const listItem = `
     <li class="pb-2 m-0 li-item-deleted">
@@ -100,86 +100,6 @@ loadStaticContent(staticOpenTasks, addTaskStatic);
 loadStaticContent(staticDoneTasks, addTaskStaticDone);
 loadStaticContent(staticDeletedTasks, addTaskStaticDeleted);
 
-// ---------------------------------------------------------------------
-
-
-// todo LIST parent class
-class ToDoList {
-    constructor(listName = "", tasks = []) {
-        this._listName = listName;
-        this._tasks = tasks;
-    }
-    get listName() {
-        return this._listName;
-    }
-    set listName(name) {
-        this._listName = name;
-    }
-    get tasks() {
-        return this._tasks;
-    }
-    set tasks(task) {
-        this._tasks.push(task);
-    }
-    deleteTask(task) {
-        this.tasks.pop(task);
-    }
-
-}
-
-// todo TASK child class
-class Task extends ToDoList {
-    constructor(task, date = Date.now(), done = false) {
-        super(listName);
-        this._task = task;
-        this._date = date;
-        this._done = done;
-    }
-    get task() {
-        return this._task;
-    }
-
-    get date() {
-        return this._date;
-    }
-}
-
-const learningList = new ToDoList("My TuDuList");
-title.textContent = learningList.listName;
-
-staticOpenTasks.forEach((task) => { learningList.tasks = task })
-
-
-console.log(learningList.tasks);
-const addTask = () => {
-
-    if (inputAddTask.value) {
-        learningList.tasks = inputAddTask.value;
-
-        console.log(learningList.tasks);
-        const listItem = `
-            <li class="shadow-sm li-item pb-2">
-                <span class="checkbox p-2">
-                    <input class="form-check-input" type="checkbox" value="">
-                </span>
-                <span class="content p-2">${inputAddTask.value}</span>
-                <span class="icons p-2">
-                    <i class="fas fa-edit"></i>
-                    <i class="fas fa-trash"></i>
-                </span>
-            </li>
-        `;
-
-        taskUl.insertAdjacentHTML('afterbegin', listItem);
-        inputAddTask.value = "";
-
-    } else {
-        console.log("mäh");
-    }
-};
-
-
-btnAddTask.addEventListener('click', addTask);
 
 
 // static content: status: 0 = open; 1 = done; 2 = deleted;
@@ -194,7 +114,7 @@ const tasksStatic = [{
     status: 1, // done
 }]
 
-const checkboxes = document.querySelectorAll('.checkbox');
+// const checkboxes = document.querySelectorAll('.checkbox');
 
 const restoreTask = (content) => {
     addTaskStatic(content);
@@ -250,9 +170,97 @@ liDeleted.forEach((li) => {
     }, false);
 })
 
+
+// STATS
 const nrOpenTasks = document.getElementById("nr-open-tasks");
 const nrDoneTasks = document.getElementById("nr-done-tasks");
 const nrDeletedTasks = document.getElementById("nr-deleted-tasks");
 nrOpenTasks.textContent = staticOpenTasks.length;
 nrDoneTasks.textContent = staticDoneTasks.length;
 nrDeletedTasks.textContent = staticDeletedTasks.length;
+
+
+// ---------------------------- OOP -------------------------------
+// todo LIST parent class
+class ToDoList {
+    constructor(listName = "", tasks = []) {
+        this._listName = listName;
+        this._tasks = tasks;
+    }
+    get listName() {
+        return this._listName;
+    }
+    set listName(name) {
+        this._listName = name;
+    }
+    get tasks() {
+        return this._tasks;
+    }
+    set tasks(task) {
+        this._tasks.push(task);
+    }
+    deleteTask(task) {
+        this.tasks.pop(task);
+    }
+
+}
+
+// todo TASK child class
+class Task extends ToDoList {
+    constructor(task, date = Date.now(), done = false) {
+        super(listName);
+        this._task = task;
+        this._date = date;
+        this._done = done;
+    }
+    get task() {
+        return this._task;
+    }
+
+    get date() {
+        return this._date;
+    }
+}
+
+
+// create new instance of list
+const learningList = new ToDoList("My TuDuList");
+const doneList = new ToDoList("Done List");
+const deletedList = new ToDoList("Deleted List");
+title.textContent = learningList.listName;
+
+
+staticOpenTasks.forEach((task) => { learningList.tasks = task })
+
+
+console.log(learningList.tasks);
+// Add task with input form
+const addTask = () => {
+
+    if (inputAddTask.value) {
+        learningList.tasks = inputAddTask.value;
+
+        console.log(learningList.tasks);
+        const listItem = `
+            <li class="shadow-sm li-item pb-2">
+                <span class="checkbox p-2">
+                    <input class="form-check-input" type="checkbox" value="">
+                </span>
+                <span class="content p-2">${inputAddTask.value}</span>
+                <span class="icons p-2">
+                    <i class="fas fa-edit"></i>
+                    <i class="fas fa-trash"></i>
+                </span>
+            </li>
+        `;
+
+        taskUl.insertAdjacentHTML('afterbegin', listItem);
+        inputAddTask.value = "";
+
+    } else {
+        console.log("mäh");
+    }
+};
+
+
+btnAddTask.addEventListener('click', addTask);
