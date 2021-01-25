@@ -51,7 +51,7 @@ class ToDoList {
 }
 
 
-// ---------------------------- SELECTORS -------------------------------//
+// ---------------------------- SELECTORS ------------------------------- //
 const listsContainer = document.getElementById("list-container");
 // List Title
 const title = document.getElementById("list-title");
@@ -60,7 +60,8 @@ const title = document.getElementById("list-title");
 const inputAddTask = document.getElementById("add-task-input");
 // btn add Task
 const btnAddTask = document.getElementById("btn-add-task");
-
+// btn delete all tasks forever
+const btnDeleteAll = document.getElementById("delete-all-tasks");
 // UL Id's for each list tipe: open, done, deleted
 const taskUl = document.getElementById("task-list");
 const taskUlDone = document.getElementById("task-list-done");
@@ -188,6 +189,9 @@ const reloadAllLists = () => {
     nrOpenTasks.textContent = openList.getTasks.length;
     nrDoneTasks.textContent = doneList.getTasks.length;
     nrDeletedTasks.textContent = deletedList.getTasks.length;
+    if (deletedList.getTasks.length > 0) {
+        btnDeleteAll.hidden = false;
+    }
 }
 
 // add new task btn
