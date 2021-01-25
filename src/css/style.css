@@ -2,14 +2,14 @@
   margin: 0;
   padding: 0;
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   color: #6d8293;
 }
 
 html {
   font-size: 100%;
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
@@ -21,7 +21,7 @@ body {
 *::before,
 *::after {
   -webkit-box-sizing: inherit;
-          box-sizing: inherit;
+  box-sizing: inherit;
 }
 
 header {
@@ -36,7 +36,7 @@ main {
 .main-container {
   position: relative;
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 nav {
@@ -88,7 +88,7 @@ input[type="checkbox"]:checked {
 
 .task-icon {
   -webkit-transform: scale(2, 2);
-          transform: scale(2, 2);
+  transform: scale(2, 2);
   color: #6d8293;
   cursor: pointer;
 }
@@ -96,7 +96,7 @@ input[type="checkbox"]:checked {
 .gone-tasks {
   max-width: 400px;
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 .gone {
@@ -105,10 +105,6 @@ input[type="checkbox"]:checked {
 
 .icons {
   text-align: end;
-}
-
-.fa-edit {
-  padding: 0 1.5rem;
 }
 
 .college {
@@ -134,7 +130,7 @@ input[type="checkbox"]:checked {
 
 .box-sizing {
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   position: relative;
   overflow: hidden;
 }
@@ -145,18 +141,18 @@ input[type="checkbox"]:checked {
   display: flex;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
   -ms-flex-wrap: rap;
-      flex-wrap: rap;
+  flex-wrap: rap;
   -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   -ms-flex-line-pack: start;
-      align-content: flex-start;
+  align-content: flex-start;
 }
 
 .icons {
@@ -165,17 +161,17 @@ input[type="checkbox"]:checked {
   display: flex;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
   -ms-flex-wrap: nowrap;
-      flex-wrap: nowrap;
+  flex-wrap: nowrap;
   -ms-flex-pack: distribute;
-      justify-content: space-around;
+  justify-content: space-around;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   -ms-flex-line-pack: start;
-      align-content: flex-start;
+  align-content: flex-start;
 }
 
 .li-item-done {
@@ -200,18 +196,18 @@ input[type="checkbox"]:checked {
   display: flex;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
   -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  flex-wrap: wrap;
   -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
   -webkit-box-align: stretch;
-      -ms-flex-align: stretch;
-          align-items: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
   -ms-flex-line-pack: stretch;
-      align-content: stretch;
+  align-content: stretch;
 }
 
 .left {
@@ -228,12 +224,11 @@ input[type="checkbox"]:checked {
 
 .unused-shit {
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
-.fa-trash,
-.fa-edit {
+.fa-trash {
   cursor: pointer;
 }
 /*# sourceMappingURL=style.css.map */
