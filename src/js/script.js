@@ -24,12 +24,12 @@ class ToDoList {
         reloadAllLists();
     }
 
-    addTask(userInput, listType) {
+    addTask(input, listType) {
         // check which type of list
         switch (listType) {
             case "open":
-                if (userInput.value) {
-                    this.updateTasks(userInput.value);
+                if (input.value) {
+                    this.updateTasks(input.value);
                     reloadAllLists();
                     break;
                 } else {
@@ -38,12 +38,12 @@ class ToDoList {
 
             case "done":
                 // add new done task
-                this.updateTasks(userInput);
+                this.updateTasks(input);
                 reloadAllLists();
                 break;
 
             case "deleted":
-                this.updateTasks(userInput);
+                this.updateTasks(input);
                 reloadAllLists();
                 break;
         }
@@ -72,7 +72,7 @@ const nrOpenTasks = document.getElementById("nr-open-tasks");
 const nrDoneTasks = document.getElementById("nr-done-tasks");
 const nrDeletedTasks = document.getElementById("nr-deleted-tasks");
 
-// create new instances of lists
+// create new instances of lists: open, done, deleted
 const openList = new ToDoList("My TuDuList");
 const doneList = new ToDoList("Done List");
 const deletedList = new ToDoList("Deleted List");
@@ -85,8 +85,9 @@ const cutString = (task) => {
     return task.length > 22 ? `${task.substr(0,22)}...` : task;
 }
 
+// clear the lists and reload content
 const reloadAllLists = () => {
-    //  --- OPEN TASKS LIST --- //
+    //  --------------------- RELOAD OPEN TASKS LIST ------------------------ //
     // clear list
     taskUl.textContent = "";
     // iterate over open tasks array and insert a li for each element  
@@ -134,7 +135,7 @@ const reloadAllLists = () => {
             }, false);
         });
     });
-    //  --- DONE TASKS LIST --- //
+    //  ----------------------- RELOAD DONE TASKS LIST --------------------- //
     // clear list
     taskUlDone.textContent = "";
     // populate list with array elements
@@ -160,7 +161,7 @@ const reloadAllLists = () => {
         })
 
     });
-    //  --- DELETED TASKS LIST --- //
+    //  ----------------- RELOAD DELETED TASKS LIST ------------------------ //
     taskUlDeleted.textContent = "";
     deletedList.getTasks.forEach((task) => {
         const listItemDeleted = `
