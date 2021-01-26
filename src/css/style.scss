@@ -1,14 +1,14 @@
-$mainColor: #6d8293;
-$secondColor: #d3f4e7;
 * {
     margin: 0;
     padding: 0;
+    -webkit-box-sizing: border-box;
     box-sizing: border-box;
-    color: $mainColor;
+    color: #6d8293;
 }
 
 html {
     font-size: 100%;
+    -webkit-box-sizing: border-box;
     box-sizing: border-box;
 }
 
@@ -20,6 +20,7 @@ body {
 *,
 *::before,
 *::after {
+    -webkit-box-sizing: inherit;
     box-sizing: inherit;
 }
 
@@ -34,28 +35,18 @@ main {
 
 .main-container {
     position: relative;
+    -webkit-box-sizing: border-box;
     box-sizing: border-box;
 }
 
-// .tasks-container {
-//     /* max-width: 60%; */
-//     /* background-image: url(https://ak1.ostkcdn.com/images/products/is/images/direct/4010ad7fd44a00b963046298bf5f1379671f8eb4/Mint-Wild-Flowers-Removable-Wallpaper.jpg?impolicy=medium); */
-//     /* background-image: url(https://www.xmple.com/wallpaper/linear-yellow-gradient-orange-1280x720-c2-ffdab9-ff6347-a-30-f-14.svg); */
-//     /* background-image: url(https://i.pinimg.com/736x/ec/d6/99/ecd6998075ddc82c5b35f5d76289bcd0.jpg); */
-//     background-repeat: no-repeat;
-//     background-size: cover;
-// }
-// .list-text {
-//     color: $mainColor;
-// }
 nav {
-    background-color: $secondColor;
+    background-color: #d3f4e7;
     height: 80px;
 }
 
 a {
     text-decoration: none;
-    color: $mainColor;
+    color: #6d8293;
 }
 
 ul li {
@@ -66,8 +57,23 @@ ul li {
     text-align: center;
 }
 
+.add-task::-webkit-input-placeholder {
+    color: #91a0a0;
+    font-size: medium;
+}
+
+.add-task:-ms-input-placeholder {
+    color: #91a0a0;
+    font-size: medium;
+}
+
+.add-task::-ms-input-placeholder {
+    color: #91a0a0;
+    font-size: medium;
+}
+
 .add-task::placeholder {
-    color: rgb(145, 160, 160);
+    color: #91a0a0;
     font-size: medium;
 }
 
@@ -75,22 +81,21 @@ ul li {
     width: 40px;
 }
 
-// input[type="checkbox"] {
-//     transform: scale(2, 2);
-// }
 input[type="checkbox"]:checked {
-    background-color: rgb(90, 168, 149);
-    border-color: rgb(90, 168, 149);
+    background-color: #5aa895;
+    border-color: #5aa895;
 }
 
 .task-icon {
+    -webkit-transform: scale(2, 2);
     transform: scale(2, 2);
-    color: $mainColor;
+    color: #6d8293;
     cursor: pointer;
 }
 
 .gone-tasks {
     max-width: 400px;
+    -webkit-box-sizing: border-box;
     box-sizing: border-box;
 }
 
@@ -112,7 +117,7 @@ input[type="checkbox"]:checked {
 }
 
 .bg-darker {
-    background-color: $secondColor;
+    background-color: #d3f4e7;
 }
 
 #list-title {
@@ -124,26 +129,48 @@ input[type="checkbox"]:checked {
 }
 
 .box-sizing {
+    -webkit-box-sizing: border-box;
     box-sizing: border-box;
     position: relative;
     overflow: hidden;
 }
 
 .li-item {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
     flex-direction: row;
+    -ms-flex-wrap: rap;
     flex-wrap: rap;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
     justify-content: space-between;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
+    -ms-flex-line-pack: start;
     align-content: flex-start;
 }
 
 .icons {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
     flex-direction: row;
+    -ms-flex-wrap: nowrap;
     flex-wrap: nowrap;
+    -ms-flex-pack: distribute;
     justify-content: space-around;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
+    -ms-flex-line-pack: start;
     align-content: flex-start;
 }
 
@@ -160,15 +187,26 @@ input[type="checkbox"]:checked {
 }
 
 .sign-border {
-    border: 1px solid $mainColor;
+    border: 1px solid #6d8293;
 }
 
 .footer {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
     flex-direction: row;
+    -ms-flex-wrap: wrap;
     flex-wrap: wrap;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
     justify-content: space-between;
+    -webkit-box-align: stretch;
+    -ms-flex-align: stretch;
     align-items: stretch;
+    -ms-flex-line-pack: stretch;
     align-content: stretch;
 }
 
@@ -185,6 +223,8 @@ input[type="checkbox"]:checked {
 }
 
 .unused-shit {
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
 }
 
