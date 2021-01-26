@@ -196,6 +196,10 @@ const reloadAllLists = () => {
 }
 
 // add new task btn
-btnAddTask.addEventListener('click', (event) => {
+btnAddTask.addEventListener('click', () => {
     openList.addTask(inputAddTask, "open");
 }, false);
+
+// delete task forever
+btnDeleteAll.addEventListener('click', () => {
+    deletedList.deleteTask(inputAddTask, "open"); }, true);
