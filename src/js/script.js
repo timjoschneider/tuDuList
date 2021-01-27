@@ -33,10 +33,10 @@ class ToDoList {
                 if (input.value) {
                     this._tasks.push(input.value);
                     reloadAllLists();
-                    break;
                 } else {
                     alert("U cannot enter an empty task!")
                 }
+                break;
 
             case "withoutUserInput":
                 // add new task to done or deleted list that 
@@ -114,28 +114,31 @@ const reloadAllLists = () => {
         const liOpen = document.querySelectorAll('.li-item');
         liOpen.forEach((li) => {
             const checkbox = li.firstElementChild.firstElementChild;
+
             const content = li.childNodes[3].textContent;
-            // use content to edit task ?
+            // TODO @Emeline use content to edit task ?
+
             const trash = li.childNodes[5].childNodes[3];
             const edit = li.childNodes[5].childNodes[1];
+
             // MOVE open tasks to done tasks onclick
             checkbox.addEventListener('change', () => {
                 // add to list doneList and remove from openList
                 doneList.addTask(task, "withoutUserInput");
                 openList.deleteTask(task);
                 // reloadAllLists();
-            }, false);
+            });
             // MOVE open tasks to deleted tasks onclick
             trash.addEventListener('click', () => {
                 // add to list deletedList and remove from openList
                 openList.deleteTask(task);
                 deletedList.addTask(task, "withoutUserInput");
-            }, false);
+            });
 
             edit.addEventListener('click', () => {
                 console.log("arrived at edit entry click")
-                    // li.parentNode.removeChild(li);
-            }, false);
+                    // TODO add action
+            });
         });
     });
     //  ----------------------- RELOAD DONE TASKS LIST --------------------- //
@@ -160,7 +163,7 @@ const reloadAllLists = () => {
             checkbox.addEventListener('change', () => {
                 doneList.deleteTask(task);
                 openList.addTask(task, "withoutUserInput");
-            }, false);
+            });
         })
 
     });
@@ -181,12 +184,11 @@ const reloadAllLists = () => {
         const liDeleted = document.querySelectorAll('.li-item-deleted');
         liDeleted.forEach((li) => {
             const trashIcon = li.firstElementChild.firstElementChild;
-            const content = li.lastElementChild.textContent;
 
-            trashIcon.addEventListener('click', (event) => {
+            trashIcon.addEventListener('click', () => {
                 openList.addTask(task, "withoutUserInput");
                 deletedList.deleteTask(task);
-            }, false);
+            });
         })
     });
     // update STATS
@@ -203,7 +205,7 @@ const reloadAllLists = () => {
 // add new task btn
 btnAddTask.addEventListener('click', () => {
     openList.addTask(inputAddTask, "withUserInput");
-}, false);
+});
 
 // delete task forever
 btnDeleteAll.addEventListener('click', () => {
