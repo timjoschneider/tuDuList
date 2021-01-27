@@ -12,16 +12,16 @@ class ToDoList {
         return this._tasks;
     }
 
+    // delete single task from list x
     deleteTask(task) {
         // deletes task from list
         let index = this._tasks.indexOf(task);
         this._tasks.splice(index, 1)
-        reloadAllLists();
     }
 
+    // delete all tasks from deleted list
     deleteAllTasks() {
         this._tasks = [];
-        reloadAllLists();
     }
 
     // add new task to one of the three lists: open, done, deleted
@@ -32,17 +32,14 @@ class ToDoList {
             case "withUserInput":
                 if (input.value) {
                     this._tasks.push(input.value);
-                    reloadAllLists();
                 } else {
                     alert("U cannot enter an empty task!")
                 }
                 break;
 
             case "withoutUserInput":
-                // add new task to done or deleted list that 
-                // does not take any user input
+                // add new task to done or deleted list that does not take any user input
                 this._tasks.push(input);
-                reloadAllLists();
                 break;
 
             default:
@@ -51,12 +48,10 @@ class ToDoList {
     }
 }
 
-
 // ---------------------------- SELECTORS ------------------------------- //
 const listsContainer = document.getElementById("list-container");
 // List Title
 const title = document.getElementById("list-title");
-
 // input field add Task
 const inputAddTask = document.getElementById("add-task-input");
 // btn add Task
@@ -67,36 +62,32 @@ const btnDeleteAll = document.getElementById("delete-all-tasks");
 const taskUl = document.getElementById("task-list");
 const taskUlDone = document.getElementById("task-list-done");
 const taskUlDeleted = document.getElementById("task-list-deleted");
-
 // STATS vars
 const nrOpenTasks = document.getElementById("nr-open-tasks");
 const nrDoneTasks = document.getElementById("nr-done-tasks");
 const nrDeletedTasks = document.getElementById("nr-deleted-tasks");
-
 // create new instances of lists: open, done, deleted
 const openList = new ToDoList("My TuDuList");
 const doneList = new ToDoList("Done List");
 const deletedList = new ToDoList("Deleted List");
 title.textContent = openList.listName;
 
-
 // ------------------------ FUNCS & EVENTLISTENERS ------------------------- //
 // cut string at 2X letters
 const cutString = (task) => {
-    return task.length > 22 ? `${task.substr(0,22)}...` : task;
+    return task.length > 20 ? `${task.substr(0,20)}...` : task;
 }
 
-
-
-// clear the lists and reload content
-const reloadAllLists = () => {
-    //  --------------------- RELOAD OPEN TASKS LIST ------------------------ //
+//  --------------------- RELOAD OPEN TASKS LIST ------------------------ //
+const reloadOpenList = () => {
     // clear list
     taskUl.textContent = "";
-    // iterate over open tasks array and insert a li for each element  
+    // iterate over open tasks array and insert a li for each element 
+    let index = 0;
     openList.getTasks.forEach((task) => {
+        // create list item
         const listItemOpen = `
-            <li class="shadow-sm li-item pb-2">
+            <li id="list-item-${index}" class="shadow-sm li-item pb-2">
                 <span class="checkbox p-2">
                     <input class="form-check-input" type="checkbox" value="">
                 </span>
@@ -107,88 +98,118 @@ const reloadAllLists = () => {
                 </span>
             </li>
         `;
+        // insert list item
         taskUl.insertAdjacentHTML('afterbegin', listItemOpen);
-        inputAddTask.value = ""; // clear input field
-
+        // clear input field
+        inputAddTask.value = "";
+        // load icons eventlisteners
         // move open tasks to either done or deleted tasks onclick
-        const liOpen = document.querySelectorAll('.li-item');
-        liOpen.forEach((li) => {
-            const checkbox = li.firstElementChild.firstElementChild;
-
-            const content = li.childNodes[3].textContent;
-            // TODO @Emeline use content to edit task ?
-
-            const trash = li.childNodes[5].childNodes[3];
-            //const edit = li.childNodes[5].childNodes[1];
-            const edit = document.getElementById("edit-icon");
-            const saveEdit = () => {
-                alert(window = "Your task has been updated");
-            };
-
-            // MOVE open tasks to done tasks onclick
-            checkbox.addEventListener('change', () => {
-                // add to list doneList and remove from openList
-                doneList.addTask(task, "withoutUserInput");
-                openList.deleteTask(task);
-                // reloadAllLists();
-            });
-            // MOVE open tasks to deleted tasks onclick
-            trash.addEventListener('click', () => {
-                // add to list deletedList and remove from openList
-                openList.deleteTask(task);
-                deletedList.addTask(task, "withoutUserInput");
-            });
-
-            edit.addEventListener('click', (e) => {
-                console.log("goi");
-                //const editInput = e.target.closest("li").children[0];
-                e.target.style.transform = "scale(1.5)";
-                const editInput = document.getElementById("task-name");
-                editInput.contentEditable = true;
-                    editInput.onkeydown = (e) => {
-                        if (e.key === "Enter") {
-                            e.preventDefault();
-                            saveEdit();
-                            editInput.onblur = () => saveEdit();
-                        } 
-                        editInput.onblur = () => saveEdit();
-                    }   
-            });
-
-            
+        const li = document.getElementById(`list-item-${index}`);
+        const checkbox = li.childNodes[1]; // select checkbox
+        const content = li.childNodes[3].textContent; // select content
+        // TODO @Emeline use content to edit task ?
+        // select trash icon
+        const trash = li.childNodes[5].childNodes[3];
+        // select edit icon
+        const edit = li.childNodes[5].childNodes[1];
+        const editInput = document.getElementById("task-name");
+        const saveEdit = () => {
+            alert(window = "Your task has been updated");
+        };
+        // MOVE open tasks to done tasks onclick
+        checkbox.addEventListener('change', () => {
+            // add to list doneList and remove from openList
+            doneList.addTask(task, "withoutUserInput");
+            openList.deleteTask(task);
+            reloadOpenList();
+            reloadDoneList();
+            reloadStatistics();
         });
+
+        // MOVE done tasks to deleted tasks onclick
+        trash.addEventListener('click', () => {
+            // add to list deletedList and remove from openList
+            openList.deleteTask(task);
+            deletedList.addTask(task, "withoutUserInput");
+            reloadOpenList();
+            reloadDeletedList();
+            reloadStatistics();
+        });
+
+        edit.addEventListener('click', (e) => {
+            console.log("goi");
+            //const editInput = e.target.closest("li").children[0];
+            e.target.style.transform = "scale(1.5)";
+            const editInput = document.getElementById("task-name");
+            editInput.contentEditable = true;
+            editInput.onkeydown = (e) => {
+                if (e.key === "Enter") {
+                    e.preventDefault();
+                    saveEdit();
+                    editInput.onblur = () => saveEdit();
+                }
+                editInput.onblur = () => saveEdit();
+            }
+        });
+        index++;
     });
-    //  ----------------------- RELOAD DONE TASKS LIST --------------------- //
+}
+
+//  ----------------------- RELOAD DONE TASKS LIST --------------------- //
+const reloadDoneList = () => {
+    let index = 0;
     // clear list
     taskUlDone.textContent = "";
     // populate list with array elements
     doneList.getTasks.forEach((task) => {
+        // create list item
         const listItemDone = `
-            <li class="pb-2 m-0 li-item-done">
-                <span id="checkbox" class="checkbox">
-                    <input class="form-check-input" 
-                    type="checkbox" value="" checked title="undo">
-                </span>
-                <span class="content">${cutString(task)}</span>
-            </li>
-            `;
+        <li id="list-item-done-${index}" class="pb-2 m-0">
+            <span id="checkbox" class="checkbox">
+                <input class="form-check-input" 
+                type="checkbox" value="" checked title="undo">
+            </span>
+            <span class="content-done">${cutString(task)}</span>
+            <span class="p-2">
+                <i class="fas fa-trash"></i>
+            </span>
+        </li>
+        `;
+        // insert list item
         taskUlDone.insertAdjacentHTML('afterbegin', listItemDone);
-        // RESTORE done tasks back to open tasks onclick
-        const liDone = document.querySelectorAll('.li-item-done');
-        liDone.forEach((li) => {
-            const checkbox = li.firstElementChild.firstElementChild;
-            checkbox.addEventListener('change', () => {
-                doneList.deleteTask(task);
-                openList.addTask(task, "withoutUserInput");
-            });
-        })
+        // select created listItemDone li item
+        const li = document.getElementById(`list-item-done-${index}`);
+        const checkbox = li.childNodes[1];
+        checkbox.addEventListener('change', () => {
+            doneList.deleteTask(task);
+            openList.addTask(task, "withoutUserInput");
+            reloadOpenList();
+            reloadDoneList();
+            reloadStatistics();
+        });
 
+        const trash = li.childNodes[5];
+        console.log(trash);
+        trash.addEventListener('click', () => {
+            // add to list deletedList and remove from openList
+            doneList.deleteTask(task);
+            deletedList.addTask(task, "withoutUserInput");
+            reloadDoneList();
+            reloadDeletedList();
+            reloadStatistics();
+        });
+
+        index++;
     });
-    //  ----------------- RELOAD DELETED TASKS LIST ------------------------ //
+}
+
+//  ----------------- RELOAD DELETED TASKS LIST ------------------------ //
+const reloadDeletedList = () => {
+    let index = 0;
     taskUlDeleted.textContent = "";
     deletedList.getTasks.forEach((task) => {
         const listItemDeleted = `
-        <li class="pb-2 m-0 li-item-deleted">
+        <li id="list-item-deleted-${index}" class="pb-2 m-0 li-item-deleted">
             <span class="restore">
                 <i class="fas fa-trash-restore" title="restore"></i>
             </span>
@@ -196,19 +217,22 @@ const reloadAllLists = () => {
         </li>
         `;
         taskUlDeleted.insertAdjacentHTML('afterbegin', listItemDeleted);
+        const li = document.getElementById(`list-item-deleted-${index}`);
+        const trashIcon = li.childNodes[1];
 
-        // RESTORE deleted tasks back to open tasks onclick
-        const liDeleted = document.querySelectorAll('.li-item-deleted');
-        liDeleted.forEach((li) => {
-            const trashIcon = li.firstElementChild.firstElementChild;
-
-            trashIcon.addEventListener('click', () => {
-                openList.addTask(task, "withoutUserInput");
-                deletedList.deleteTask(task);
-            });
-        })
+        trashIcon.addEventListener('click', () => {
+            openList.addTask(task, "withoutUserInput");
+            deletedList.deleteTask(task);
+            reloadOpenList();
+            reloadDeletedList();
+            reloadStatistics();
+        });
+        index++;
     });
-    // update STATS
+}
+
+const reloadStatistics = () => {
+    // --- update STATS ---
     nrOpenTasks.textContent = openList.getTasks.length;
     nrDoneTasks.textContent = doneList.getTasks.length;
     nrDeletedTasks.textContent = deletedList.getTasks.length;
@@ -222,9 +246,13 @@ const reloadAllLists = () => {
 // add new task btn
 btnAddTask.addEventListener('click', () => {
     openList.addTask(inputAddTask, "withUserInput");
+    reloadOpenList();
+    reloadStatistics();
 });
 
-// delete task forever
+// delete tasks permanently
 btnDeleteAll.addEventListener('click', () => {
     deletedList.deleteAllTasks();
+    reloadDeletedList();
+    reloadStatistics();
 });
