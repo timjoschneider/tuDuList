@@ -12,11 +12,6 @@ class ToDoList {
         return this._tasks;
     }
 
-    updateTasks(task) {
-        // pushes new element into list
-        this._tasks.push(task);
-    }
-
     deleteTask(task) {
         // deletes task from list
         let index = this._tasks.indexOf(task);
@@ -24,28 +19,34 @@ class ToDoList {
         reloadAllLists();
     }
 
+    deleteAllTasks() {
+        this._tasks = [];
+        reloadAllLists();
+    }
+
+    // add new task to one of the three lists: open, done, deleted
     addTask(input, listType) {
         // check which type of list
         switch (listType) {
-            case "open":
+            // add new task to open list that takes userinput 
+            case "withUserInput":
                 if (input.value) {
-                    this.updateTasks(input.value);
+                    this._tasks.push(input.value);
                     reloadAllLists();
                     break;
                 } else {
-                    console.log("mäh");
+                    alert("U cannot enter an empty task!")
                 }
 
-            case "done":
-                // add new done task
-                this.updateTasks(input);
+            case "withoutUserInput":
+                // add new task to done or deleted list that 
+                // does not take any user input
+                this._tasks.push(input);
                 reloadAllLists();
                 break;
 
-            case "deleted":
-                this.updateTasks(input);
-                reloadAllLists();
-                break;
+            default:
+                console.log("addTask called without or with invalid listtype");
         }
     }
 }
@@ -85,6 +86,8 @@ const cutString = (task) => {
     return task.length > 22 ? `${task.substr(0,22)}...` : task;
 }
 
+
+
 // clear the lists and reload content
 const reloadAllLists = () => {
     //  --------------------- RELOAD OPEN TASKS LIST ------------------------ //
@@ -116,20 +119,20 @@ const reloadAllLists = () => {
             const trash = li.childNodes[5].childNodes[3];
             const edit = li.childNodes[5].childNodes[1];
             // MOVE open tasks to done tasks onclick
-            checkbox.addEventListener('change', (event) => {
+            checkbox.addEventListener('change', () => {
                 // add to list doneList and remove from openList
-                doneList.addTask(task, "done");
+                doneList.addTask(task, "withoutUserInput");
                 openList.deleteTask(task);
                 // reloadAllLists();
             }, false);
             // MOVE open tasks to deleted tasks onclick
-            trash.addEventListener('click', (event) => {
+            trash.addEventListener('click', () => {
                 // add to list deletedList and remove from openList
                 openList.deleteTask(task);
-                deletedList.addTask(task, "deleted");
+                deletedList.addTask(task, "withoutUserInput");
             }, false);
 
-            edit.addEventListener('click', (event) => {
+            edit.addEventListener('click', () => {
                 console.log("arrived at edit entry click")
                     // li.parentNode.removeChild(li);
             }, false);
@@ -154,9 +157,9 @@ const reloadAllLists = () => {
         const liDone = document.querySelectorAll('.li-item-done');
         liDone.forEach((li) => {
             const checkbox = li.firstElementChild.firstElementChild;
-            checkbox.addEventListener('change', (event) => {
+            checkbox.addEventListener('change', () => {
                 doneList.deleteTask(task);
-                openList.addTask(task, "open");
+                openList.addTask(task, "withoutUserInput");
             }, false);
         })
 
@@ -181,7 +184,7 @@ const reloadAllLists = () => {
             const content = li.lastElementChild.textContent;
 
             trashIcon.addEventListener('click', (event) => {
-                openList.addTask(task, "done");
+                openList.addTask(task, "withoutUserInput");
                 deletedList.deleteTask(task);
             }, false);
         })
@@ -192,14 +195,17 @@ const reloadAllLists = () => {
     nrDeletedTasks.textContent = deletedList.getTasks.length;
     if (deletedList.getTasks.length > 0) {
         btnDeleteAll.hidden = false;
+    } else {
+        btnDeleteAll.hidden = true;
     }
 }
 
 // add new task btn
 btnAddTask.addEventListener('click', () => {
-    openList.addTask(inputAddTask, "open");
+    openList.addTask(inputAddTask, "withUserInput");
 }, false);
 
 // delete task forever
 btnDeleteAll.addEventListener('click', () => {
-    deletedList.deleteTask(inputAddTask, "open"); }, true);
+    deletedList.deleteAllTasks();
+});
