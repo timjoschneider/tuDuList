@@ -100,9 +100,9 @@ const reloadAllLists = () => {
                 <span class="checkbox p-2">
                     <input class="form-check-input" type="checkbox" value="">
                 </span>
-                <span class="content p-2">${task}</span>
+                <span id="task-name" class="content p-2">${task}</span>
                 <span class="icons p-2">
-                    <i class="fas fa-edit"></i>
+                    <i id="edit-icon" class="fas fa-edit"></i>
                     <i class="fas fa-trash"></i>
                 </span>
             </li>
@@ -119,7 +119,11 @@ const reloadAllLists = () => {
             // TODO @Emeline use content to edit task ?
 
             const trash = li.childNodes[5].childNodes[3];
-            const edit = li.childNodes[5].childNodes[1];
+            //const edit = li.childNodes[5].childNodes[1];
+            const edit = document.getElementById("edit-icon");
+            const saveEdit = () => {
+                alert(window = "Your task has been updated");
+            };
 
             // MOVE open tasks to done tasks onclick
             checkbox.addEventListener('change', () => {
@@ -135,10 +139,23 @@ const reloadAllLists = () => {
                 deletedList.addTask(task, "withoutUserInput");
             });
 
-            edit.addEventListener('click', () => {
-                console.log("arrived at edit entry click")
-                    // TODO add action
+            edit.addEventListener('click', (e) => {
+                console.log("goi");
+                //const editInput = e.target.closest("li").children[0];
+                e.target.style.transform = "scale(1.5)";
+                const editInput = document.getElementById("task-name");
+                editInput.contentEditable = true;
+                    editInput.onkeydown = (e) => {
+                        if (e.key === "Enter") {
+                            e.preventDefault();
+                            saveEdit();
+                            editInput.onblur = () => saveEdit();
+                        } 
+                        editInput.onblur = () => saveEdit();
+                    }   
             });
+
+            
         });
     });
     //  ----------------------- RELOAD DONE TASKS LIST --------------------- //
