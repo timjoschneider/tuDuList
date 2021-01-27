@@ -228,9 +228,16 @@ input[type="checkbox"]:checked {
   align-items: center;
 }
 
-.fa-trash, 
+.fa-trash {
+  cursor: pointer;
+}
+
 .fa-edit {
-    cursor: pointer;
-    padding-right: 1.5rem;
+  cursor: pointer;
+  padding-right: 1.5rem;
+}
+
+.content-done {
+  width: 200 px;
 }
 /*# sourceMappingURL=style.css.map */
