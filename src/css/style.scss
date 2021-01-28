@@ -240,3 +240,11 @@ input[type="checkbox"]:checked {
 .content-done {
     width: 200 px;
 }
+
+@include media-breakpoint-down(lg) {
+    .center,
+    .left,
+    .right {
+        text-align: left;
+    }
+}
