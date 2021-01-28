@@ -12,6 +12,11 @@ class ToDoList {
         return this._tasks;
     }
 
+    editTask(task, editedTask) {
+        let index = this._tasks.indexOf(task);
+        this._tasks[index] = editedTask;
+    }
+
     // delete single task from list x
     deleteTask(task) {
         // deletes task from list
@@ -91,7 +96,7 @@ const reloadOpenList = () => {
                 <span class="checkbox p-2">
                     <input class="form-check-input" type="checkbox" value="">
                 </span>
-                <span id="task-name" class="content p-2">${task}</span>
+                <span id="task-name-${index}" class="content p-2">${task}</span>
                 <span class="icons p-2">
                     <i id="edit-icon" class="fas fa-edit"></i>
                     <i class="fas fa-trash"></i>
@@ -106,16 +111,13 @@ const reloadOpenList = () => {
         // move open tasks to either done or deleted tasks onclick
         const li = document.getElementById(`list-item-${index}`);
         const checkbox = li.childNodes[1]; // select checkbox
-        const content = li.childNodes[3].textContent; // select content
-        // TODO @Emeline use content to edit task ?
+        const content = li.childNodes[3]; // select content
+
         // select trash icon
         const trash = li.childNodes[5].childNodes[3];
         // select edit icon
         const edit = li.childNodes[5].childNodes[1];
-        const editInput = document.getElementById("task-name");
-        const saveEdit = () => {
-            alert(window = "Your task has been updated");
-        };
+
         // MOVE open tasks to done tasks onclick
         checkbox.addEventListener('change', () => {
             // add to list doneList and remove from openList
@@ -137,18 +139,20 @@ const reloadOpenList = () => {
         });
 
         edit.addEventListener('click', (e) => {
-            console.log("goi");
-            //const editInput = e.target.closest("li").children[0];
             e.target.style.transform = "scale(1.5)";
-            const editInput = document.getElementById("task-name");
-            editInput.contentEditable = true;
-            editInput.onkeydown = (e) => {
+            content.contentEditable = true;
+            content.style.border = "solid 1px #868686";
+            content.style.borderRadius = "5px";
+
+            content.onkeydown = (e) => {
                 if (e.key === "Enter") {
-                    e.preventDefault();
-                    saveEdit();
-                    editInput.onblur = () => saveEdit();
+                    openList.editTask(task, content.textContent);
+                    reloadOpenList();
                 }
-                editInput.onblur = () => saveEdit();
+                if (e.key === "Escape") {
+                    reloadOpenList();
+                }
+
             }
         });
         index++;
